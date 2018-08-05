@@ -24,6 +24,8 @@ public class ChatImple extends UnicastRemoteObject implements Chat
             socket.close();
         }
     }
+
+
     
     protected ChatImple() throws RemoteException  
     { 
@@ -34,8 +36,7 @@ public class ChatImple extends UnicastRemoteObject implements Chat
         System.out.println(message);
     } 
 
-    public void sendToServer(String message) throws RemoteException { 
-        
+    public void sendToServer(String message) throws RemoteException {         
         try {
             System.out.println("sendToServer: "+message);
             MulticastPublisher mp = new MulticastPublisher();

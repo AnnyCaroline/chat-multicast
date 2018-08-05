@@ -61,9 +61,8 @@ class MulticastReceiver extends Thread {
 
                 for (String s: clients) { 
                     System.out.println(s);
-                    
-                    // Chat c = (Chat) Naming.lookup("rmi:"+s);
-                    // c.sendToClient(received);
+                    Chat c = (Chat) Naming.lookup("rmi:"+s);
+                    c.sendToClient(received);
                 }
             }     
         } catch (Exception e) {
