@@ -16,6 +16,15 @@
         h3{
             font-size:18px;
         }
+        .card{
+            width: 100%;
+            margin-top:15px;
+        }
+        .alert-dark{
+            margin-top:20px;
+            background-color: #1c1c1c;
+            border-color: black;
+        }
     </style>
 </head>
 
@@ -61,22 +70,37 @@
         <hr>
 
         <h2>Execução</h2>
-        
-        <div style="margin-left:15px;">
-            
-            <hr>
-            <h3>Execução do cliente <br></h3>
-            <code>./client.sh<br></code>
-            <hr>
 
-            <h3>Execução do servidor<br></h3>
-            <code>./server.sh<br></code>
-            <hr>
-
-            <h3>Listar processos<br></h3>
-            <code>ps ux</code>
-            
+        <div class="card">
+            <h3 class="card-header">Execução do cliente </h3>
+            <div class="card-body">
+                <p class="card-text"><code>./client.sh<br></code></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">O script simplesmente executa a aplicação cliente usando <code>java ChatClient</code></li>
+            </ul>
         </div>
+
+        <div class="card">
+            <h3 class="card-header">Execução do servidor </h3>
+            <div class="card-body">
+                <p class="card-text"><code>./server.sh<br></code></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Na linha <code>rmiregistry 9902 &</code>, o script cria e inicia, em background, um registro de objeto remoto na porta 9902 no host atual. Depois, executa a aplicação servidora e, por fim, mata o processo criado pelo <code>rmiregistry</code>. O parâmetro <code>-u</code> especifica o usuário do processo que deve ser matado.<br>
+                    <div class="alert alert-dark">
+                        <code>
+                            rmiregistry 9902 &<br>
+                            java ChatServer<br>
+                            pkill -u asd02 rmiregistry<br>
+                        </code>
+                    </div>
+
+                </li>
+            </ul>
+            </div>
+        </div>            
 
 
     </div>
