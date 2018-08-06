@@ -12,6 +12,4 @@
 - [Uma introdução ao RMI em Java](https://www.devmedia.com.br/uma-introducao-ao-rmi-em-java/28681)
 - [JVM Shutdown Hook in Java](https://www.geeksforgeeks.org/jvm-shutdown-hook-java/)
 - [Utilizando arquivos de propriedades no Java](https://www.devmedia.com.br/utilizando-arquivos-de-propriedades-no-java/25546)
-- [How to execute shell command from Java
-
-](https://www.mkyong.com/java/how-to-execute-shell-command-from-java/)
+- [How to execute shell command from Java](https://www.mkyong.com/java/how-to-execute-shell-command-from-java/)
