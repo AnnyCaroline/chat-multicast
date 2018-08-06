@@ -37,11 +37,10 @@ public class ChatClient {
             });            
 
             while(true){
-                System.out.print("> ");
                 input = br.readLine();
 
                 Chat server = (Chat) Naming.lookup("rmi://localhost:9902/ChatService"); 
-                server.sendToServer(input);
+                server.sendToServer(input, "rmi://localhost:9902/Chat" + userName);
             }
         }  
         catch (Exception e){ 
