@@ -22,11 +22,11 @@ class MulticastReceiver extends Thread {
 
     public void run() {
         try {
-            socket = new MulticastSocket(4446);
+            socket = new MulticastSocket(confs.multicastPort);
             InetAddress group = InetAddress.getByName(confs.multicast);
             socket.joinGroup(group); 
+            
             while (true) {
-
                 packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
 
@@ -43,8 +43,13 @@ class MulticastReceiver extends Thread {
                     String sUserName = s.replace("//"+confs.host+":"+confs.port+"/Chat","");
 
                     if (!msg.sender.equals(sUserName) ){
+
+                        if (msg.message.equals("sair")){
+                            msg.message = "----saiu----";
+                        }
+
                         Chat c = (Chat) Naming.lookup("rmi:"+s);
-                        c.exibir(msg.message, msg.dataHora, msg.sender);
+                        c.exibir(new MulticastMessage(msg.message, msg.sender));
                     }
                 }
             }     

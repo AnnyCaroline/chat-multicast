@@ -19,42 +19,41 @@ public class ChatImple extends UnicastRemoteObject implements Chat
         private DatagramSocket socket;
         private InetAddress group;
         private byte[] buf;
-     
-        public void multicast(MulticastMessage multicastMessage) throws IOException {
+        private Configuracao confs;
 
-            Configuracao confs = new Configuracao();
-
+        public MulticastPublisher() throws IOException{
+            confs = new Configuracao();
             socket = new DatagramSocket();
             group = InetAddress.getByName(confs.multicast);
-
+        }
+     
+        public void multicast(MulticastMessage multicastMessage) throws IOException {
             ByteArrayOutputStream baos = new ByteArrayOutputStream(6400);
             ObjectOutputStream oos = new ObjectOutputStream(baos);
 
             oos.writeObject(multicastMessage);
             buf = baos.toByteArray();
             
-            DatagramPacket packet = new DatagramPacket(buf, buf.length, group, 4446);
+            DatagramPacket packet = new DatagramPacket(buf, buf.length, group, this.confs.multicastPort);
 
             socket.send(packet);
             oos.close();
-            socket.close();
         }
     }
     
-    protected ChatImple() throws RemoteException  
-    { 
+    protected ChatImple() throws RemoteException{ 
         super(); 
     }
 
-    public void exibir(String message, Date dataHora, String sender) throws RemoteException { 
+    public void exibir(MulticastMessage multicastMessage) throws RemoteException { 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        System.out.println("[" + dateFormat.format(dataHora) + "] " + sender + ": " + message);
-    } 
+        System.out.println("[" + dateFormat.format(multicastMessage.dataHora) + "] " + multicastMessage.sender + ": " + multicastMessage.message);
+    }
 
-    public void sendToServer(String message, String sender) throws RemoteException {         
+    public void sendToServer(MulticastMessage multicastMessage) throws RemoteException {         
         try {
             MulticastPublisher mp = new MulticastPublisher();
-            mp.multicast(new MulticastMessage(message, sender)); 
+            mp.multicast(multicastMessage); 
         } catch (Exception e) {
             //TODO: handle exception
         }
