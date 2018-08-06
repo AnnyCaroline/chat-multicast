@@ -3,7 +3,7 @@
 
 
 ## A arquitetura
-![diagrama](images/diagrama.png)
+![diagrama](images/diagrama.png)  
 A arquitetura escolhida foi a que utiliza socket UDT multicast (com um número IP classe D igual a 230.0.0.02) para comunicação entre servidores, e RMI para a comunicação entre servidores e clientes por meio da porta 9902. Vale citar que essas configurações podem ser alteradas por meio do arquivo conf.properties.
 
 ## Links importantes:
@@ -32,7 +32,8 @@ pkill -u asd02 rmiregistry
 ```
 
 ## Funcionamento
-O servidor imprime todas as mensagens recebidas juntamente com o nome do usuário e o hostname de que a enviou, e a data e hora do envio. Exibe, também, quando um usuário entra ou sai do chat. 
+O servidor imprime todas as mensagens recebidas juntamente com o nome do usuário e o hostname de que a enviou, e a data e hora do envio. Exibe, também, quando um usuário entra ou sai do chat.  
+
 ![server](images/server.png);
 
 O cliente primeiramente requisita o nome do usuário e, se esse nome for único, permite que ele comece a enviar mensagens. O usuário pode se desconectar do chat enviando a mensagem "sair" ou fechar completamente o cliente clicando Ctrl+C. Vale citar que, como o nome do usuário é usado no Naming.bind, ele não pode conter espaços em branco. 
