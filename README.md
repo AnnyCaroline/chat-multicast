@@ -1,6 +1,6 @@
 # Chat-Multicast
 
-![diagrama](images/diagrama)
+![diagrama](images/diagrama.png)
 
 # Links
 - [Exemplo Aplicação Java RMI](https://www.youtube.com/watch?v=tLtTWY6JqNo)
