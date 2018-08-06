@@ -49,28 +49,22 @@
                 <h2>Links importantes:</h2>
                 <ul>
                     <li><a href="assets/sd-20172-l1-grad.pdf" target="_blank">Enunciado</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=EHZppP90ZmQ&feature=youtu.be">Vídeo do chat em funcionamento</a></li>
+                    <li><a href="https://youtu.be/cZYR-r8cv8Q" target="_blank">Vídeo do chat em funcionamento</a></li>
                     <li><a href="https://github.com/AnnyCaroline/chat-multicast" target="_blank">Repositório do projeto no GitHub</a></li>
         
                 </ul>
             
             </div>
-          </div>
-
-
+        </div>
 
         <hr>
-
         <h2>Chat em funcionamento</h2>
-        
         <a href="assets/images/chat-em-funcionamento.png" target="_blank">
             <img style="width: 100%;" src="assets/images/chat-em-funcionamento.png">
         </a>
         
         <hr>
-
-        <h2>Execução</h2>
-
+        <h2>Scripts de execução</h2>
         <div class="card">
             <h3 class="card-header">Execução do cliente </h3>
             <div class="card-body">
@@ -80,7 +74,6 @@
                 <li class="list-group-item">O script simplesmente executa a aplicação cliente usando <code>java ChatClient</code></li>
             </ul>
         </div>
-
         <div class="card">
             <h3 class="card-header">Execução do servidor </h3>
             <div class="card-body">
@@ -99,10 +92,21 @@
 
                 </li>
             </ul>
-            </div>
-        </div>            
-
-
+        </div>    
+        
+        <hr>
+        <h2>Funcionamento</h2>
+        <p>
+            O servidor imprime todas as mensagens recebidas juntamente com o nome do usuário e o <code>hostname</code> de que a enviou, e a data e hora do envio. Exibe, também, quando um usuário entra ou sai do chat.
+            <br>
+            <img src="assets/images/server.png">        
+        </p>
+        <p>
+            O cliente primeiramente requisita o nome do usuário e, se esse nome for único, permite que ele comece a enviar mensagens. O usuário pode se desconectar do chat enviando a mensagem "sair" ou fechar completamente o cliente clicando <code>Ctrl+C</code>. Vale citar que, como o nome do usuário é usado no <code>Naming.bind</code>, ele não pode conter espaços em branco.
+            <br>
+            <img src="assets/images/client.png">
+        </p>
+        
     </div>
 </body>
 

@@ -50,7 +50,7 @@ public class ChatClient {
                     c = new ChatImple(); 
 
                     Naming.bind("rmi://"+confs.host+":"+confs.port+"/Chat"+input, c);
-                    server.exibir(new MulticastMessage("---entrou---", input));
+                    server.sendToServer(new MulticastMessage("---entrou---", input));
 
                     final String userName = input;
 
