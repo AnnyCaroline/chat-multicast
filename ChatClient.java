@@ -17,7 +17,7 @@ public class ChatClient {
             br = new BufferedReader(new InputStreamReader(System.in));
 
             System.out.println("Bem vindo ao chat");
-            System.out.print("Digite o seu nome:");
+            System.out.print("Digite o seu nome: ");
             input = br.readLine();
 
             c = new ChatImple(); 
@@ -41,7 +41,7 @@ public class ChatClient {
                 input = br.readLine();
 
                 Chat server = (Chat) Naming.lookup("rmi://"+confs.host+":"+confs.port+"/ChatService"); 
-                server.sendToServer(input, "rmi://"+confs.host+":"+confs.port+"/Chat" + userName);
+                server.sendToServer(input, userName);
             }
         }  
         catch (Exception e){ 

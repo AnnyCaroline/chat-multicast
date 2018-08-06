@@ -40,7 +40,9 @@ class MulticastReceiver extends Thread {
                 String[] clients = Naming.list("rmi://"+confs.host+":"+confs.port+"/ChatService"); 
 
                 for (String s: clients) { 
-                    if (!msg.sender.equals("rmi:"+s) ){
+                    String sUserName = s.replace("//"+confs.host+":"+confs.port+"/Chat","");
+
+                    if (!msg.sender.equals(sUserName) ){
                         Chat c = (Chat) Naming.lookup("rmi:"+s);
                         c.exibir(msg.message, msg.dataHora, msg.sender);
                     }

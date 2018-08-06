@@ -47,9 +47,8 @@ public class ChatImple extends UnicastRemoteObject implements Chat
     }
 
     public void exibir(String message, Date dataHora, String sender) throws RemoteException { 
-        //TODO: exibir data hora e sender
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        System.out.println(sender + ": " + message + "(" + dateFormat.format(dataHora) + ")");
+        System.out.println("[" + dateFormat.format(dataHora) + "] " + sender + ": " + message);
     } 
 
     public void sendToServer(String message, String sender) throws RemoteException {         
