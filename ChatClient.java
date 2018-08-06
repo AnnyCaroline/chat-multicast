@@ -10,6 +10,7 @@ public class ChatClient {
     { 
         String input = "";
         Chat c = null;
+        Configuracao confs = new Configuracao();
 
         try{        
             BufferedReader br = null; 
@@ -20,13 +21,13 @@ public class ChatClient {
             input = br.readLine();
 
             c = new ChatImple(); 
-            Naming.rebind("rmi://localhost:9902/Chat"+input, c); 
+            Naming.rebind("rmi://"+confs.host+":"+confs.port+"/Chat"+input, c); 
 
             final String userName = input;
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 public void run() {
                     try {
-                        Naming.unbind("rmi://localhost:9902/Chat" + userName);     
+                        Naming.unbind("rmi://"+confs.host+":"+confs.port+"/Chat" + userName);     
                     } catch (Exception e) {
                         System.out.println("Erro ao tentar desconectar o cliente");
                     }
@@ -39,8 +40,8 @@ public class ChatClient {
             while(true){
                 input = br.readLine();
 
-                Chat server = (Chat) Naming.lookup("rmi://localhost:9902/ChatService"); 
-                server.sendToServer(input, "rmi://localhost:9902/Chat" + userName);
+                Chat server = (Chat) Naming.lookup("rmi://"+confs.host+":"+confs.port+"/ChatService"); 
+                server.sendToServer(input, "rmi://"+confs.host+":"+confs.port+"/Chat" + userName);
             }
         }  
         catch (Exception e){ 

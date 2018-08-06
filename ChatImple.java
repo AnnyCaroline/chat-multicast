@@ -21,8 +21,11 @@ public class ChatImple extends UnicastRemoteObject implements Chat
         private byte[] buf;
      
         public void multicast(MulticastMessage multicastMessage) throws IOException {
+
+            Configuracao confs = new Configuracao();
+
             socket = new DatagramSocket();
-            group = InetAddress.getByName("230.0.0.02");
+            group = InetAddress.getByName(confs.multicast);
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream(6400);
             ObjectOutputStream oos = new ObjectOutputStream(baos);

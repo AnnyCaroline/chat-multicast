@@ -18,11 +18,12 @@ class MulticastReceiver extends Thread {
     protected byte[] buf = new byte[5000];
     DatagramPacket packet;
     String received;
+    Configuracao confs = new Configuracao();
 
     public void run() {
         try {
             socket = new MulticastSocket(4446);
-            InetAddress group = InetAddress.getByName("230.0.0.02");
+            InetAddress group = InetAddress.getByName(confs.multicast);
             socket.joinGroup(group); 
             while (true) {
 
@@ -36,7 +37,7 @@ class MulticastReceiver extends Thread {
 
                 MulticastMessage msg = (MulticastMessage) o;
 
-                String[] clients = Naming.list("rmi://localhost:9902/ChatService"); 
+                String[] clients = Naming.list("rmi://"+confs.host+":"+confs.port+"/ChatService"); 
 
                 for (String s: clients) { 
                     if (!msg.sender.equals("rmi:"+s) ){
@@ -55,7 +56,8 @@ public class ChatServer {
     ChatServer() { 
         try { 
             Chat c = new ChatImple(); 
-            Naming.rebind("rmi://localhost:9902/ChatService", c); 
+            Configuracao confs = new Configuracao();
+            Naming.rebind("rmi://"+confs.host+":"+confs.port+"/ChatService", c); 
             
             MulticastReceiver mr = new MulticastReceiver();
             mr.start();
