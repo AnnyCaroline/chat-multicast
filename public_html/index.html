@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Documentação da lista de graduação - 2018.1</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <style>
+        body{
+            margin:10px;
+        }
+        textarea{
+            display:none;
+        }
+        h3{
+            font-size:18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Documentação da lista de graduação - 2018.1</h1>
+            <legend>Anny Caroline Correa Chagas</legend>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <img src="assets/images/diagrama.png">
+            </div>
+            <div class="col-sm">
+                <h2>A arquitetura</h2>
+
+                A arquitetura escolhida foi a que utiliza socket UDT multicast (com um número <a href="https://pt.wikipedia.org/wiki/Endere%C3%A7o_IP#Classes_de_endere%C3%A7os" target="_blank">IP classe D</a> igual a 230.0.0.02) para comunicação entre servidores, e RMI para a comunicação entre servidores e clientes por meio da porta 9902. Vale citar que essas configurações podem ser alteradas por meio do arquivo <code>conf.properties</code>.
+        
+                <hr>
+        
+                <h2>Links importantes:</h2>
+                <ul>
+                    <li><a href="assets/sd-20172-l1-grad.pdf" target="_blank">Enunciado</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=EHZppP90ZmQ&feature=youtu.be">Vídeo do chat em funcionamento</a></li>
+                    <li><a href="https://github.com/AnnyCaroline/chat-multicast" target="_blank">Repositório do projeto no GitHub</a></li>
+        
+                </ul>
+            
+            </div>
+          </div>
+
+
+
+        <hr>
+
+        <h2>Chat em funcionamento</h2>
+        
+        <a href="assets/images/chat-em-funcionamento.png" target="_blank">
+            <img style="width: 100%;" src="assets/images/chat-em-funcionamento.png">
+        </a>
+        
+        <hr>
+
+        <h2>Execução</h2>
+        
+        <div style="margin-left:15px;">
+            
+            <hr>
+            <h3>Execução do cliente <br></h3>
+            <code>./client.sh<br></code>
+            <hr>
+
+            <h3>Execução do servidor<br></h3>
+            <code>./server.sh<br></code>
+            <hr>
+
+            <h3>Listar processos<br></h3>
+            <code>ps ux</code>
+            
+        </div>
+
+
+    </div>
+</body>
+
+</html>
